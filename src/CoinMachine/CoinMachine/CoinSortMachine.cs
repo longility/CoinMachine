@@ -1,28 +1,27 @@
 ﻿using System.Collections.Generic;
 using CoinMachine.Coins;
+using CoinMachine.Coins.Sort;
 
 namespace CoinMachine
 {
     public class CoinSortMachine
     {
-        public List<Penny> Pennies { get; set; }
-        public List<Nickel> Nickels { get; set; }
+        private CoinPockets coinPockets = new CoinPockets();
 
-        public void FeedCoins(IList<ICoin> coins)
+        public List<Penny> Pennies { get { return coinPockets.Pennies; } }
+        public List<Nickel> Nickels { get { return coinPockets.Nickels; } }
+
+        private readonly CoinSorter coinSortFirstLink;
+
+        public void FeedCoins(List<ICoin> coins)
         {
-            foreach (ICoin coin in coins)
-            {
-                if (coin is Penny)
-                    Pennies.Add(coin as Penny);
-                else if (coin is Nickel)
-                    Nickels.Add(coin as Nickel);
-            }
+            coinSortFirstLink.SortCoinIntoPocket(coins);
         }
 
         public CoinSortMachine()
         {
-            Pennies = new List<Penny>();
-            Nickels = new List<Nickel>();
+            this.coinSortFirstLink = new PennySorter(coinPockets);
+            coinSortFirstLink.SetNextSorter(new NickelSorter(coinPockets));
         }
     }
 }

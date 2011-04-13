@@ -42,9 +42,13 @@
   <ItemGroup>
     <Compile Include="CoinSortMachine.cs" />
     <Compile Include="Coins\CoinFactory.cs" />
+    <Compile Include="Coins\Sort\CoinPockets.cs" />
+    <Compile Include="Coins\Sort\CoinSorter.cs" />
     <Compile Include="Coins\Nickel.cs" />
     <Compile Include="Coins\ICoin.cs" />
     <Compile Include="Coins\Penny.cs" />
+    <Compile Include="Coins\Sort\NickelSorter.cs" />
+    <Compile Include="Coins\Sort\PennySorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
