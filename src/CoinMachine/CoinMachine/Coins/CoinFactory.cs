@@ -5,6 +5,7 @@ namespace CoinMachine.Coins
     public class CoinFactory
     {
         private Penny penny = null;
+        private Nickel nickel = null;
 
         public Penny Penny
         {
@@ -15,14 +16,34 @@ namespace CoinMachine.Coins
             }
         }
 
+        public Nickel Nickel
+        {
+            get
+            {
+                nickel = nickel ?? new Nickel();
+                return nickel;
+            }
+        }
+
         public IList<ICoin> GetPennies(int numberOfPennies)
         {
-            IList<ICoin> pennies = new List<ICoin>();
-            for (int i = 0; i < numberOfPennies; i++)
+            return GetCoins(Penny, numberOfPennies);
+
+        }
+
+        public IList<ICoin> GetNickels(int numberOfNickels)
+        {
+            return GetCoins(Nickel, numberOfNickels);
+        }
+
+        private IList<ICoin> GetCoins(ICoin coin, int numberOfCoins)
+        {
+            IList<ICoin> coins = new List<ICoin>();
+            for (int i = 0; i < numberOfCoins; i++)
             {
-                pennies.Add(Penny);
+                coins.Add(coin);
             }
-            return pennies;
+            return coins;
         }
     }
 }

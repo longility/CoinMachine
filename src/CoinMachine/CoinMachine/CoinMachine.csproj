@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CoinSortMachine.cs" />
     <Compile Include="Coins\CoinFactory.cs" />
+    <Compile Include="Coins\Nickel.cs" />
     <Compile Include="Coins\ICoin.cs" />
     <Compile Include="Coins\Penny.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
