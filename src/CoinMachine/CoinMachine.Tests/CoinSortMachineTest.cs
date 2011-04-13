@@ -1,9 +1,6 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using CoinMachine.Coins;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CoinMachine.Tests
 {
@@ -15,8 +12,8 @@ namespace CoinMachine.Tests
         {
             CoinSortMachine machine = new CoinSortMachine();
             List<ICoin> coins = new List<ICoin>();
-            
-            coins.AddRange(CoinFactory.CreatePennies(10));
+            CoinFactory factory = new CoinFactory();
+            coins.AddRange(factory.GetPennies(10));
             machine.FeedCoins(coins);
             Assert.AreEqual(10, machine.Pennies.Count);
         }

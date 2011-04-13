@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CoinMachine.Coins
 {
-    public static class CoinFactory
+    public class CoinFactory
     {
-        public static IList<ICoin> CreatePennies(int numberOfPennies)
+        private Penny penny = null;
+
+        public Penny Penny
+        {
+            get
+            {
+                penny = penny ?? new Penny();
+                return penny;
+            }
+        }
+
+        public IList<ICoin> GetPennies(int numberOfPennies)
         {
             IList<ICoin> pennies = new List<ICoin>();
             for (int i = 0; i < numberOfPennies; i++)
             {
-                pennies.Add(new Penny());
+                pennies.Add(Penny);
             }
             return pennies;
         }
